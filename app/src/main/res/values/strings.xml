@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">OCGreenSave</string>
+    <string name="login_string">Welcome</string>
+    <string name="login_description">
+        Sign in to view your own personal stats and track your own contributions,
+        or create an account with a username and password you want</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_buton_text">Sign In</string>
+    <string name="login_create_button">Create Profile</string>
+    <string name="log_activity_title">Log Your Efforts</string>
+    <string name="log_reset_button_text">Reset Counters</string>
+    <string name="log_take_pic_string">Log Your Receipt</string>
+    <string name="log_manually_create_log">Log using input</string>
+    <string name="log_save_exit_text">Save and Exit</string>
+    <string name="log_notice_text">
+        Note: We will reset your counters but add them to the statistics page!</string>
+    <string name="log_button_descriptions">Take a picture of your receipt, or enter in values manually</string>
+    <string name="adminTextView">Admin Options</string>
+    <string name="editEmployees">Edit Employees</string>
+    <string name="editScheduleButton">Edit Employee Schedule</string>
+    <string name="logBaleButton">Log Bale</string>
+    <string name="create_account_title">Create a Profile</string>
+    <string name="create_account_username_hint">Desired Username</string>
+    <string name="create_account_password_hint">Desired Password</string>
+    <string name="create_account_password_confirm_hint">Confirm Password</string>
+    <string name="create_account_button_text">Create Your Profile</string>
+    <string name="count_activity_title">Enter lb</string>
+    <string name="menu_activity_recycle_button_text">Recycle!</string>
+    <string name="menu_activity_admin_button_text">Admin Options</string>
+    <string name="menu_activity_logout_button_text">Log Out</string>
+    <string name="admin_activity_mainmenu_button">Back to Main Menu</string>
+    <string name="image_description_create_profile">back ground image for the create a acc</string>
+    <string name="pull_up_photos_Button">View Recorded Photos</string>
+    <string name="log_out_button_text">Log Out</string>
+    <string name="log_new_recycle_button">Add Recycle Log</string>
+    <string name="log_out_button_Text">Log Out</string>
+    <string name="deleteLogText">Delete Log</string>
+</resources>
