@@ -11,6 +11,7 @@
         android:id="@+id/addRecycleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="HandleRecycleButton"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:text="@string/log_new_recycle_button" />
 

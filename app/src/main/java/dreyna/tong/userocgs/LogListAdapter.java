@@ -24,21 +24,21 @@ import java.util.List;
  * Created by Lelouch on 11/20/2017.
  */
 
-public class ProfileListAdapter extends ArrayAdapter<Profile> {
+public class LogListAdapter extends ArrayAdapter<Logger> {
     private Context mContext;
-    private List<Profile> mGamesList = new ArrayList<>();
+    private List<Logger> mLogsList = new ArrayList<>();
     private int mResourceId;
 
-    public ProfileListAdapter(Context c, int rId, List<Profile> profiles) {
-        super(c, rId, profiles);
+    public LogListAdapter(Context c, int rId, List<Logger> logs) {
+        super(c, rId, logs);
         mContext = c;
         mResourceId = rId;
-        mGamesList = profiles;
+        mLogsList = logs;
     }
 
     public View getView(int pos, View convertView, ViewGroup parent)
     {
-        final Profile profile = mGamesList.get(pos);
+        final Logger logs = mLogsList.get(pos);
 
         LayoutInflater inflater =
                 (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -51,9 +51,10 @@ public class ProfileListAdapter extends ArrayAdapter<Profile> {
         TextView profileListDescriptionTextView =
                 (TextView) view.findViewById(R.id.profileListViewName);
 
-        profileListLinearLayout.setTag(profile);
-        profileListNameTextView.setText(profile.getName());
-        profileListDescriptionTextView.setText("Money Earned: "+String.valueOf(profile.getMoneyEarned())+"\nTotal Recycled: "+String.valueOf(profile.getRecycledTotal()));
+        profileListLinearLayout.setTag(logs);
+        profileListNameTextView.setText(logs.getName());
+        profileListDescriptionTextView.setText("Money Earned: "+String.valueOf(logs.getMoney_earned())
+                +"\nTotal Recycled: "+String.valueOf(logs.getTotal_recycled()));
 
         return view;
     }

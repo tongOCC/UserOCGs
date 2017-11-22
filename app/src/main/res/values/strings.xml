@@ -34,6 +34,10 @@
     <string name="pull_up_photos_Button">View Recorded Photos</string>
     <string name="log_out_button_text">Log Out</string>
     <string name="log_new_recycle_button">Add Recycle Log</string>
+    <string name="incorrect_input_Toast">Input log in credentials were incorrect, Please try again.</string>
     <string name="log_out_button_Text">Log Out</string>
     <string name="deleteLogText">Delete Log</string>
+    <string name="passwordMatchError">Passwords did not match. Please Try again.</string>
+    <string name="successfullyloggedOut">Logging out</string>
+    <string name="username_taken_errorText">Username already exists. Please try again.</string>
 </resources>

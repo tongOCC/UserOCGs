@@ -9,12 +9,13 @@
     android:padding="15dp">
 
     <ImageView
+        android:id="@+id/profileImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/default_profile_image"
-        android:alpha="0.33"
         android:layout_centerInParent="true"
-        android:contentDescription="@string/image_description_create_profile"/>
+        android:alpha="0.33"
+        android:contentDescription="@string/image_description_create_profile"
+        android:src="@drawable/default_profile_image" />
 
     <TextView
         android:id="@+id/textView4"
