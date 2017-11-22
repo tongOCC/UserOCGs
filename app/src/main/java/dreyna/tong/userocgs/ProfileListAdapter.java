@@ -45,11 +45,9 @@ public class ProfileListAdapter extends ArrayAdapter<Profile> {
         View view = inflater.inflate(mResourceId, null);
 
         LinearLayout profileListLinearLayout =
-                (LinearLayout) view.findViewById(R.id.linearLayout);
-        ImageView profileListImageView =
-                (ImageView) view.findViewById(R.id.ProfileListImageView);
+                (LinearLayout) view.findViewById(R.id.listItemLinearLayout);
         TextView profileListNameTextView =
-                (TextView) view.findViewById(R.id.ProfileListDescriptionTextView);
+                (TextView) view.findViewById(R.id.profileListDescriptionTextView);
         TextView profileListDescriptionTextView =
                 (TextView) view.findViewById(R.id.profileListViewName);
 

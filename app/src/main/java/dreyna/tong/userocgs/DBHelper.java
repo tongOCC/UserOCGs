@@ -88,7 +88,7 @@ class DBHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Profile profile =
-                        new Profile(cursor.getString(0),
+                        new Profile(cursor.getLong(0),
                                 cursor.getString(1),
                                 cursor.getDouble(2),
                                 cursor.getDouble(3));
@@ -132,7 +132,10 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 PROFILE_TABLE,
-                new String[]{PROFILE_KEY_FIELD_ID, FIELD_USERNAME, FIELD_MONEY_EARNED, FIELD_TOTAL_RECYCLED},
+                new String[]{PROFILE_KEY_FIELD_ID,
+                        FIELD_USERNAME,
+                        FIELD_MONEY_EARNED,
+                        FIELD_TOTAL_RECYCLED},
                 PROFILE_KEY_FIELD_ID + "=?",
                 new String[]{String.valueOf(id)},
                 null, null, null, null);

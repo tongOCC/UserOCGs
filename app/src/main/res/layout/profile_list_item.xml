@@ -12,12 +12,13 @@
         android:layout_height="75dp"
         android:layout_marginRight="12dp"
         android:layout_marginTop="4dp"
-        android:src="@mipmap/ic_launcher"></ImageView>
+        android:src="@mipmap/ic_launcher"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/listItemLinearLayout">
 
         <TextView
             android:id="@+id/profileListViewName"
@@ -27,7 +28,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/ProfileListDescriptionTextView"
+            android:id="@+id/profileListDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />

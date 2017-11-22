@@ -11,7 +11,7 @@ public class Profile {
     private double moneyEarned;
     private double recycledTotal;
 
-    public Profile(long id, String name, String password, double moneyEarned, double recycledTotal) {
+    public Profile(long id, String name, double moneyEarned, double recycledTotal) {
         this.id=id;
         this.name = name;
         this.password = password;
