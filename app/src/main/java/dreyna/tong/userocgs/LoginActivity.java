@@ -42,28 +42,37 @@ public class LoginActivity extends AppCompatActivity {
      * @param view
      */
     public void toMenuButtonClick(View view) {
-       allProfiles= db.getAllProfile();
+        allProfiles = db.getAllProfile();
 /**TODO**/String usernameText = username.getText().toString();
         String passwordText = password.getText().toString();
-        boolean loginSuccess=false;
+        boolean loginSuccess = false;
         if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
             Toast.makeText(LoginActivity.this, R.string.incorrect_input_Toast, Toast.LENGTH_SHORT).show();
         } else {
             for (Profile p : allProfiles) {
                 if (p.getName().equals(usernameText) && p.getPassword().equals(passwordText)) {
-                    name=p.getName();
+                    name = "" + p.getName();
                     Intent intent = new Intent(this, MainMenuActivity.class);
                     intent.putExtra("profileName", p);
-                    intent.putExtra("backUpName",name);
-                    loginSuccess=true;
+                    intent.putExtra("name", name);
+                    loginSuccess = true;
+                    resetViewText();
                     startActivity(intent);
                 }
             }
-            if(!loginSuccess)
+            if (!loginSuccess) {
+                resetViewText();
                 Toast.makeText(LoginActivity.this, R.string.incorrect_input_Toast, Toast.LENGTH_SHORT).show();
+            }
         }
     }
+    public void resetViewText()
+    {
+       username.setText("");
+        password.setText("");
+    }
     public void toCreateAccount(View view) {
+        resetViewText();
         startActivity(new Intent(this, CreateProfileActivity.class));
     }
 }

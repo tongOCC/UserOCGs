@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dreyna.tong.userocgs">
-
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,9 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateProfileActivity" />
-        <activity android:name=".MainMenuActivity" />
-        <activity android:name=".NewLogActivity"></activity>
+        <activity
+            android:name=".CreateProfileActivity"
+            android:parentActivityName=".LoginActivity"/>
+        <activity android:name=".MainMenuActivity"
+            android:parentActivityName=".LoginActivity"/>
+        <activity android:name=".NewLogActivity"
+            android:parentActivityName=".MainMenuActivity"></activity>
     </application>
 
 </manifest>

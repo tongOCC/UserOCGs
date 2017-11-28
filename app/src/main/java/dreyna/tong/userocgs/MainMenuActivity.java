@@ -1,6 +1,7 @@
 package dreyna.tong.userocgs;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +14,12 @@ import java.util.List;
 public class MainMenuActivity extends AppCompatActivity {
     private DBHelper db;
     private List<Profile> allProfiles;
-    private ListView profileListView;
+    private ListView logListView;
 
     private List<Logger> allLogsList= new ArrayList<>();
     private List<Logger> filteredLogs = new ArrayList<>();
 
+    private Uri imageUri;
     private LogListAdapter LogListAdapter;
 private String name;
     private Profile yourProfile;
@@ -26,7 +28,7 @@ private String name;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        profileListView = (ListView) findViewById(R.id.listView);
+        logListView = (ListView) findViewById(R.id.listViewMainMenu);
 
         db = new DBHelper(this);
 
@@ -34,28 +36,23 @@ private String name;
         allLogsList= db.getAllLogs();
 
         Intent intent = getIntent();
-        name= "tev";
+        String intentGrabName= intent.getStringExtra("backUpName");
+        name= "t";
         //Profile profile = intent.getExtras().getParcelable("profileName");
 
         for (Logger LOG : allLogsList) {
             if (name.equals(LOG.getName()))
                 filteredLogs.add(LOG);
         }
-               // }
-              //  else
-                //{
-
 
         LogListAdapter = new LogListAdapter(this, R.layout.profile_list_item,  filteredLogs);
-
-
-        profileListView.setAdapter(LogListAdapter);
-        LogListAdapter.notifyDataSetChanged();
+        logListView.setAdapter(LogListAdapter);
         Toast.makeText(MainMenuActivity.this, allLogsList.toString(), Toast.LENGTH_SHORT).show();
     }
 
     public void logOutOnClick(View view) {
         Toast.makeText(MainMenuActivity.this, R.string.successfullyloggedOut, Toast.LENGTH_SHORT).show();
+        name="";
 startActivity(new Intent(this,LoginActivity.class));
 
     }

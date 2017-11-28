@@ -28,6 +28,10 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
     private Context mContext;
     private List<Logger> mLogsList = new ArrayList<>();
     private int mResourceId;
+    private LinearLayout logListLinearLayout;
+    private TextView nameTextView;
+    private TextView descriptionTextView;
+    private ImageView recieptImageView;
 
     public LogListAdapter(Context c, int rId, List<Logger> logs) {
         super(c, rId, logs);
@@ -38,24 +42,26 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
 
     public View getView(int pos, View convertView, ViewGroup parent)
     {
-        final Logger logs = mLogsList.get(pos);
+
 
         LayoutInflater inflater =
                 (LayoutInflater) mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(mResourceId, null);
-
-        LinearLayout profileListLinearLayout =
+        Logger logs = mLogsList.get(pos);
+        logListLinearLayout =
                 (LinearLayout) view.findViewById(R.id.listItemLinearLayout);
-        TextView profileListNameTextView =
+        descriptionTextView   =
                 (TextView) view.findViewById(R.id.profileListDescriptionTextView);
-        TextView profileListDescriptionTextView =
+        nameTextView =
                 (TextView) view.findViewById(R.id.profileListViewName);
+        recieptImageView =
+                (ImageView) view.findViewById(R.id.ProfileListImageView);
 
-        profileListLinearLayout.setTag(logs);
-        profileListNameTextView.setText(logs.getName());
-        profileListDescriptionTextView.setText("Money Earned: "+String.valueOf(logs.getMoney_earned())
+        nameTextView.setText(logs.getName());
+        descriptionTextView.setText("Money Earned: "+String.valueOf(logs.getMoney_earned())
                 +"\nTotal Recycled: "+String.valueOf(logs.getTotal_recycled()));
-
+        recieptImageView.setImageURI(logs.getReciept_image());
+        logListLinearLayout.setTag(logs);
         return view;
     }
 }

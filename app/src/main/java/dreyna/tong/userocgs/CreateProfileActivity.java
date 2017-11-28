@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     private EditText createAccountUsername;
     private EditText createAccountPassword;
     private EditText createAccountConfirmPassword;
+    private Button backToLoginScreenButton;
     private DBHelper db;
     private List<Profile> allProfiles;
     @Override
@@ -26,6 +28,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         createAccountUsername=(EditText) findViewById(R.id.createProfileUsernameEditText);
         createAccountPassword=(EditText) findViewById(R.id.createProfilePasswordEditText);
         createAccountConfirmPassword=(EditText)findViewById(R.id.createProfilePassword2EditText);
+        backToLoginScreenButton=(Button) findViewById(R.id.backToLogInButton);
 
     }
 
@@ -57,12 +60,25 @@ public class CreateProfileActivity extends AppCompatActivity {
                         Profile newProfile = new Profile(name,password, 0, 0);
                         db.addProfile(newProfile);
                         Intent intent = new Intent(this, MainMenuActivity.class);
-                        intent.putExtra("username", name);
+                        intent.putExtra("name", name);
+                        resetViewText();
                         startActivity(intent);
                     }
             }
         }
         else
             Toast.makeText(CreateProfileActivity.this, R.string.incorrect_input_Toast, Toast.LENGTH_SHORT).show();
+    }
+public void resetViewText()
+{
+    createAccountConfirmPassword.setText("");
+    createAccountUsername.setText("");
+    createAccountConfirmPassword.setText("");
+}
+
+    public void HandleBackToLoginClick(View view) {
+        resetViewText();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 }

@@ -6,6 +6,7 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -23,10 +24,10 @@ class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
 
     //TASK: DEFINE THE DATABASE VERSION AND NAME  (DATABASE CONTAINS MULTIPLE TABLES)
-    static final String DATABASE_NAME = "RecyclingLOGs2.0";
+    static final String DATABASE_NAME = "RecyclingLOGG";
     private static final int DATABASE_VERSION = 1;
 
-    //TASK: DEFINE THE FIELDS (COLUMN NAMES) FOR THE INSTRUCTORS TABLE
+
     private static final String PROFILE_TABLE = "Profiles";
     private static final String PROFILE_KEY_FIELD_ID = "_id";
     private static final String FIELD_USERNAME = "username";
@@ -35,12 +36,13 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_TOTAL_RECYCLED = "total_recycled";
 
     // LOG DATABASE
-    private static final String LOG_TABLE = "LOGS";
+    private static final String LOG_TABLE = "LOGG";
     private static final String LOG_KEY_FIELD_ID = "_id";
     private static final String FIELD_LOGUSERNAME = "username";
     private static final String FIELD_LOGMONEY_EARNED = "money_earned";
     private static final String FIELD_LOGDATE= "logdate";
     private static final String FIELD_LOGTOTAL_RECYCLED = "total_recycled";
+    private static final String FIELD_URI_IMAGE_RECIEPT= "image_uri";
 
 
     public DBHelper(Context context) {
@@ -63,7 +65,8 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_LOGUSERNAME + " TEXT, "
                 + FIELD_LOGDATE+ " TEXT, "
                 + FIELD_LOGMONEY_EARNED + " REAL, "
-                + FIELD_LOGTOTAL_RECYCLED + " REAL" + ")";
+                + FIELD_LOGTOTAL_RECYCLED + " REAL, "
+                + FIELD_URI_IMAGE_RECIEPT + " TEXT"+ ")";
         database.execSQL(createQuery);
     }
 
@@ -72,6 +75,7 @@ class DBHelper extends SQLiteOpenHelper {
                           int oldVersion,
                           int newVersion) {
         database.execSQL("DROP TABLE IF EXISTS " + PROFILE_TABLE);
+        database.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE);
         onCreate(database);
     }
 
@@ -85,7 +89,6 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_PASSWORD, profile.getPassword());
         values.put(FIELD_MONEY_EARNED, profile.getMoneyEarned());
         values.put(FIELD_TOTAL_RECYCLED, profile.getRecycledTotal());
-
         db.insert(PROFILE_TABLE, null, values);
 
         // CLOSE THE DATABASE CONNECTION
@@ -186,6 +189,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_LOGDATE, logRecycle.getDate());
         values.put(FIELD_LOGMONEY_EARNED, logRecycle.getMoney_earned());
         values.put(FIELD_LOGTOTAL_RECYCLED, logRecycle.getTotal_recycled());
+        values.put(FIELD_URI_IMAGE_RECIEPT,logRecycle.getReciept_image().toString());
 
         db.insert(LOG_TABLE, null, values);
 
@@ -198,7 +202,7 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.query(
                 LOG_TABLE,
-                new String[]{LOG_KEY_FIELD_ID, FIELD_LOGUSERNAME,FIELD_LOGDATE, FIELD_LOGMONEY_EARNED, FIELD_LOGTOTAL_RECYCLED},
+                new String[]{LOG_KEY_FIELD_ID, FIELD_LOGUSERNAME,FIELD_LOGDATE, FIELD_LOGMONEY_EARNED, FIELD_LOGTOTAL_RECYCLED,FIELD_URI_IMAGE_RECIEPT},
                 null,
                 null,
                 null, null, null, null);
@@ -211,7 +215,8 @@ class DBHelper extends SQLiteOpenHelper {
                                 cursor.getString(1),
                                 cursor.getString(2),
                                 cursor.getDouble(3),
-                                cursor.getDouble(4));
+                                cursor.getDouble(4),
+                                Uri.parse(cursor.getString(5)));
                loggerList.add(loggedLog);
             } while (cursor.moveToNext());
         }
@@ -243,6 +248,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_LOGDATE,loggedLog.getDate());
         values.put(FIELD_LOGMONEY_EARNED, loggedLog.getMoney_earned());
         values.put(FIELD_LOGTOTAL_RECYCLED, loggedLog.getTotal_recycled());
+        values.put(FIELD_URI_IMAGE_RECIEPT,loggedLog.getReciept_image().toString());
 
         db.update(LOG_TABLE, values, LOG_KEY_FIELD_ID + " = ?",
                 new String[]{String.valueOf(loggedLog.getId())});
@@ -269,7 +275,8 @@ class DBHelper extends SQLiteOpenHelper {
                 cursor.getString(0),
                 cursor.getString(1),
                 cursor.getDouble(2),
-                cursor.getDouble(3));
+                cursor.getDouble(3),
+                Uri.parse(cursor.getString(4)));
 
         cursor.close();
         db.close();
