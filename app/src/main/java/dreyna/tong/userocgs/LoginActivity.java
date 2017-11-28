@@ -24,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         db = new DBHelper(this);
+        db.deleteAllLogs();
+        db.deleteAllProfiles();
         username = (EditText) findViewById(R.id.usernameloginScreenEditText);
         password = (EditText) findViewById(R.id.passwordLogInEditText);
 

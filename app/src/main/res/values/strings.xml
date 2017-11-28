@@ -42,4 +42,5 @@
     <string name="username_taken_errorText">Username already exists. Please try again.</string>
     <string name="totalNewLog">Total:</string>
     <string name="ViewStatsButton">View Stats</string>
+    <string name="BackToMenuFromDetailsButton">Back to Main Menu</string>
 </resources>

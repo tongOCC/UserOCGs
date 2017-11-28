@@ -6,7 +6,7 @@ import android.net.Uri;
  * Created by Lelouch on 11/22/2017.
  */
 
-public class Logger {
+public class Logger  {
     private long id;
     private String name;
     private String date;
@@ -74,5 +74,17 @@ public class Logger {
 
     public void setTotal_recycled(double total_recycled) {
         this.total_recycled = total_recycled;
+    }
+
+    @Override
+    public String toString() {
+        return "Logger{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                ", money_earned=" + money_earned +
+                ", total_recycled=" + total_recycled +
+                ", reciept_image=" + reciept_image +
+                '}';
     }
 }

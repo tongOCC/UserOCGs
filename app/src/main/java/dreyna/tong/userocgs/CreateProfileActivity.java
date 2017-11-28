@@ -23,6 +23,8 @@ public class CreateProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_profile);
 
         db = new DBHelper(this);
+        db.deleteAllProfiles();
+        db.deleteAllLogs();
         allProfiles=db.getAllProfile();
 
         createAccountUsername=(EditText) findViewById(R.id.createProfileUsernameEditText);
@@ -60,7 +62,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                         Profile newProfile = new Profile(name,password, 0, 0);
                         db.addProfile(newProfile);
                         Intent intent = new Intent(this, MainMenuActivity.class);
-                        intent.putExtra("name", name);
+                        intent.putExtra("profileName", newProfile);
                         resetViewText();
                         startActivity(intent);
                     }

@@ -74,7 +74,7 @@ public class NewLogActivity extends AppCompatActivity {
         //if(yourProfile.equals(null))
        // {
           //  yourProfile.setName(intent.getStringExtra("backUpName"));
-            name=(intent.getStringExtra("backUpName"));
+        yourProfile=intent.getExtras().getParcelable("profileName");
        // }
 
     }
@@ -82,7 +82,7 @@ public class NewLogActivity extends AppCompatActivity {
     public void saveLogToDatabase(View view) {
         String username;
         //if(yourProfile.equals(null))
-         username=name;
+         username=yourProfile.getName();
         //else
             //username=yourProfile.getName();
         String date= DateFormat.getDateTimeInstance().format(new Date());
@@ -142,7 +142,7 @@ public class NewLogActivity extends AppCompatActivity {
 
         }, 10000);
         Intent intent= new Intent(this, MainMenuActivity.class);
-        intent.putExtra(username,"name");
+        intent.putExtra("profileName", yourProfile );
         startActivity(intent);
     }
     public static Uri getUriFromResource(Context context, int resID)
