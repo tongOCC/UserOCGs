@@ -3,16 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="20dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="dreyna.tong.userocgs.RecycleDetailsActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/DetailsImageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
         app:srcCompat="@drawable/receipt_icon" />
+
+    <TextView
+        android:id="@+id/DetailsDateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/DetailsTextView"

@@ -58,7 +58,7 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
                 (ImageView) view.findViewById(R.id.ProfileListImageView);
 
         nameTextView.setText(logs.getName());
-        descriptionTextView.setText("Money Earned: $"+String.valueOf(logs.getMoney_earned())
+        descriptionTextView.setText("Date: "+ logs.getDate()+"\nMoney Earned: $"+String.valueOf(logs.getMoney_earned())
                 +"\nTotal Recycled: LB(s) "+String.valueOf(logs.getTotal_recycled()));
         recieptImageView.setImageURI(logs.getReciept_image());
         logListLinearLayout.setTag(logs);

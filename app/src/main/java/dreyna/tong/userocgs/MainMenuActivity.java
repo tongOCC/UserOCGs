@@ -49,7 +49,7 @@ private String name;
 
         LogListAdapter = new LogListAdapter(this, R.layout.profile_list_item,  filteredLogs);
         logListView.setAdapter(LogListAdapter);
-        Toast.makeText(MainMenuActivity.this, allLogsList.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainMenuActivity.this, filteredLogs.toString(), Toast.LENGTH_LONG).show();
     }
 
     public void logOutOnClick(View view) {
@@ -71,14 +71,15 @@ startActivity(new Intent(this,LoginActivity.class));
     {
         LinearLayout select= (LinearLayout) view;
         Logger selectedLog= (Logger) select.getTag();
-        Toast.makeText(MainMenuActivity.this,selectedLog.toString(), Toast.LENGTH_LONG).show();
 
-        String money=String.valueOf(selectedLog.getMoney_earned());
+//        String money=String.valueOf(selectedLog.getMoney_earned());
         String RecyceledTotal= String.valueOf(selectedLog.getTotal_recycled());
+        String date= selectedLog.getDate().toString();
         String Uri = selectedLog.getReciept_image().toString();
 
         Intent detailsIntent= new Intent(this, RecycleDetailsActivity.class);
-        detailsIntent.putExtra("money_earned",money);
+       // detailsIntent.putExtra("money_earned",money);
+        detailsIntent.putExtra("date",date);
         detailsIntent.putExtra("recycled_total",RecyceledTotal);
         detailsIntent.putExtra("Uri",Uri);
         startActivity(detailsIntent);

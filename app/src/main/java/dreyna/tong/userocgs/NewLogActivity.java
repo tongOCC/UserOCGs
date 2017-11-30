@@ -126,8 +126,6 @@ public class NewLogActivity extends AppCompatActivity {
                 + Double.parseDouble(GlassEditText.getText().toString())*GLASS_PRICE
                 +Double.parseDouble(AlluminumEditText.getText().toString())*ALUMINUM_PRICE;
 
-        imageUri=getUriFromResource(this,R.drawable.receipt_icon);
-        logImageView.setImageURI(imageUri);
 
         totalTextView.setText(String.valueOf(twoPlaces.format(money_earned)));
         Logger newLog= new Logger(username, date, money_earned,total_recycle, imageUri);
@@ -142,6 +140,7 @@ public class NewLogActivity extends AppCompatActivity {
 
         }, 10000);
         Intent intent= new Intent(this, MainMenuActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("profileName", yourProfile );
         startActivity(intent);
     }
