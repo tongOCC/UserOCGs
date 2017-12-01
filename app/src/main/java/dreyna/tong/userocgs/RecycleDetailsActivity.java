@@ -27,9 +27,9 @@ private Uri imageUri;
 
 
 Intent intent= getIntent();
-DetailsTextView.setText(intent.getStringExtra("money_earned"));
-RecycledTextView.setText(intent.getStringExtra("recycled_total"));
-dateTextView.setText(intent.getStringExtra("date"));
+DetailsTextView.setText("Recycled Earnings: $"+intent.getStringExtra("money_earned"));
+RecycledTextView.setText("Amount Recycled in Pounds: "+intent.getStringExtra("recycled_total")+"LB(s)");
+dateTextView.setText("Date: "+intent.getStringExtra("date"));
 imageUri=Uri.parse(intent.getStringExtra("Uri"));
 recieptImage.setImageURI(imageUri);
 

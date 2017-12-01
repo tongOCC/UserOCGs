@@ -44,5 +44,15 @@
     <string name="ViewStatsButton">View Stats</string>
     <string name="BackToMenuFromDetailsButton">Back to Main Menu</string>
     <string name="find_us_text">Find Us!</string>
-    <string name="contact_info">Contact Info</string>
+    <string name="contact_info">Hours/Availability</string>
+    <string name="usernameForStats">Username: </string>
+    <string name="yourStatsPounds">Your Total amount Recycled lb(s) :</string>
+    <string name="yourStatsMoneyEarned">Your Earned amount: </string>
+    <string name="yourStatsEnergySaved">Your energy saved: watts </string>
+    <string name="saveChanges">Save Changes</string>
+    <string name="InstructionsForDeletionTextView">Press and hold down the log you wish to delete..</string>
+    <string name="successfullyDeletedSelectedItems">Successfully deleted Selected Logs</string>
+    <string name="failedDeletedSelectedItems">No changes to save</string>
+    <string name="contact_infoALLINFO">WebSite: orangecoastcollege.edu \nPhone Number(714) 432-5131\n Friday 9AM–5PM \n Saturday 9AM–5PM\n Sunday Closed\n Monday 9AM–5PM\n Tuesday 9AM–5PM\n Wednesday 9AM–5PM\n Thursday 9AM–5PM</string>
+    <string name="backToMap">Back to maps</string>
 </resources>

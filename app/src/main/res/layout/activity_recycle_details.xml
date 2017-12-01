@@ -19,6 +19,7 @@
         android:id="@+id/DetailsDateTextView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:textSize="20dp"
         android:layout_weight="1"
         android:text="TextView" />
 
@@ -26,6 +27,7 @@
         android:id="@+id/DetailsTextView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:textSize="20dp"
         android:layout_weight="1"
         android:text="TextView" />
 
@@ -33,6 +35,7 @@
         android:id="@+id/DetailsRecycledDone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:textSize="20dp"
         android:layout_weight="1"
         android:text="TextView" />
 

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="dreyna.tong.userocgs">
+    package="dreyna.tong.userocgs">
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true"/>
+        android:required="true" />
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,42 +21,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"
-                  android:screenOrientation="portrait">
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".CreateProfileActivity"
             android:parentActivityName=".LoginActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainMenuActivity"
             android:parentActivityName=".LoginActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".NewLogActivity"
             android:parentActivityName=".MainMenuActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RecycleDetailsActivity"
             android:parentActivityName=".MainMenuActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ViewStatsActivity"
             android:parentActivityName=".MainMenuActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MapActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MapActivity"
+            android:parentActivityName=".LoginActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".DeleteLogActivity"
+            android:parentActivityName=".MainMenuActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ContactActivity" android:parentActivityName=".MapActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:onClick="viewDetails"
     android:clickable="true"
+    android:longClickable="true"
     android:id="@+id/listItemLinearLayout">
 
     <ImageView

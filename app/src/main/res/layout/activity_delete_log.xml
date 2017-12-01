@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="dreyna.tong.userocgs.DeleteLogActivity">
+
+    <TextView
+        android:id="@+id/InstructionsForDeleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textSize="30dp"
+        android:layout_weight="2"
+        android:text="@string/InstructionsForDeletionTextView" />
+
+    <ListView
+        android:id="@+id/DeleteListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:longClickable="true"
+        android:layout_weight="8" />
+
+    <Button
+        android:id="@+id/DeleteSaveChanges"
+        android:layout_width="match_parent"
+android:onClick="saveChangesFromDelete"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/saveChanges"
+        android:textColor="@android:color/background_light" />
+
+    <Button
+        android:id="@+id/DeleteBackToMainMenu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:onClick="backToMainMenuFromDelete"
+        android:text="@string/BackToMenuFromDetailsButton" />
+
+</LinearLayout>
