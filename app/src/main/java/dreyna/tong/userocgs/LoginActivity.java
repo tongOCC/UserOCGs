@@ -77,4 +77,9 @@ public class LoginActivity extends AppCompatActivity {
         resetViewText();
         startActivity(new Intent(this, CreateProfileActivity.class));
     }
+
+    public void toMapClick(View view) {
+        Intent toMapIntent = new Intent(this, MapActivity.class);
+        startActivity(toMapIntent);
+    }
 }

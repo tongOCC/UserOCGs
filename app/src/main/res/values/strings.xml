@@ -43,4 +43,6 @@
     <string name="totalNewLog">Total:</string>
     <string name="ViewStatsButton">View Stats</string>
     <string name="BackToMenuFromDetailsButton">Back to Main Menu</string>
+    <string name="find_us_text">Find Us!</string>
+    <string name="contact_info">Contact Info</string>
 </resources>
