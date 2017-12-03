@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">OCGreenSave</string>
     <string name="login_string">Welcome</string>
-    <string name="login_description">
-        Sign in to view your own personal stats and track your own contributions,
-        or create an account with a username and password you want</string>
+    <string name="login_description">"         Sign in to view your own personal stats and track your own contributions, or create an account with a username and password you want"</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="login_buton_text">Sign In</string>
@@ -13,8 +11,7 @@
     <string name="log_take_pic_string">Log Your Receipt</string>
     <string name="log_manually_create_log">Log using input</string>
     <string name="log_save_exit_text">Save and Exit</string>
-    <string name="log_notice_text">
-        Note: We will reset your counters but add them to the statistics page!</string>
+    <string name="log_notice_text">"         Note: We will reset your counters but add them to the statistics page!"</string>
     <string name="log_button_descriptions">Take a picture of your receipt, or enter in values manually</string>
     <string name="adminTextView">Admin Options</string>
     <string name="editEmployees">Edit Employees</string>
@@ -53,6 +50,6 @@
     <string name="InstructionsForDeletionTextView">Press and hold down the log you wish to delete..</string>
     <string name="successfullyDeletedSelectedItems">Successfully deleted Selected Logs</string>
     <string name="failedDeletedSelectedItems">No changes to save</string>
-    <string name="contact_infoALLINFO">WebSite: orangecoastcollege.edu \nPhone Number(714) 432-5131\n Friday 9AM–5PM \n Saturday 9AM–5PM\n Sunday Closed\n Monday 9AM–5PM\n Tuesday 9AM–5PM\n Wednesday 9AM–5PM\n Thursday 9AM–5PM</string>
+    <string name="contact_infoALLINFO">WebSite: orangecoastcollege.edu  Phone Number(714) 432-5131  Friday 9AM–5PM   Saturday 9AM–5PM  Sunday Closed  Monday 9AM–5PM  Tuesday 9AM–5PM  Wednesday 9AM–5PM  Thursday 9AM–5PM</string>
     <string name="backToMap">Back to maps</string>
 </resources>

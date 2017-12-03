@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+/**
+ * Class that handles when the user navigates to the contact info and hours activity
+ */
 public class ContactActivity extends AppCompatActivity {
 
     @Override
@@ -14,6 +17,10 @@ public class ContactActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact);
     }
 
+    /**
+     * handles when th user clicks on the back to maps button
+     * @param view
+     */
     public void backtoMap(View view) {
 
         Intent logOut = new Intent(this, MapActivity.class);

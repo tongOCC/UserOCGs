@@ -15,6 +15,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class handles when the user navigates to the delete log activity and allows for deletion of the item from the database
+ */
 public class DeleteLogActivity extends AppCompatActivity
          {
 
@@ -28,8 +31,10 @@ public class DeleteLogActivity extends AppCompatActivity
     private LogListAdapter LogListAdapter;
 
 
-
-
+             /**
+              * starts the activity and instantiates the views and data
+              * @param savedInstanceState
+              */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,11 +76,20 @@ public class DeleteLogActivity extends AppCompatActivity
 
     }
 
-public void viewDetails(View v)
+             /**
+              * View details method that is a place holder due to using a listAdapter xml that requires the method
+              * does nothing but save errors
+              * @param v
+              */
+             public void viewDetails(View v)
 {
 
 }
 
+             /**
+              * saves the changes made to the list and deletes those from the database
+              * @param view save changes button
+              */
     public void saveChangesFromDelete(View view) {
       if(!deletedLogs.isEmpty() || deletedLogs.size()!=0) {
           for (Logger L : deletedLogs) {
@@ -89,6 +103,10 @@ public void viewDetails(View v)
           Toast.makeText(DeleteLogActivity.this, R.string.failedDeletedSelectedItems, Toast.LENGTH_SHORT).show();
     }
 
+             /**
+              * handles when the user clicks the backto main menu button
+              * @param view the button
+              */
              public void backToMainMenuFromDelete(View view) {
 
                  Intent backToMainMenu = new Intent(this, MainMenuActivity.class);

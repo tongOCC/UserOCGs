@@ -7,6 +7,10 @@ import android.os.Parcelable;
  * Created by Lelouch on 11/19/2017.
  */
 
+/**
+ * profile class that stores a unique id for database purposes, name, passwordm money earned, recycled
+ * Total and is parcelable
+ */
 public class Profile implements Parcelable {
     private long id;
     private String name;
@@ -14,6 +18,14 @@ public class Profile implements Parcelable {
     private double moneyEarned;
     private double recycledTotal;
 
+    /**
+     * Constructor for a profile object
+     * @param id
+     * @param name
+     * @param password
+     * @param moneyEarned
+     * @param recycledTotal
+     */
     public Profile(long id, String name, String password, double moneyEarned, double recycledTotal) {
         this.id=id;
         this.name = name;
@@ -37,6 +49,10 @@ public class Profile implements Parcelable {
         this.recycledTotal = 0;
     }
 
+    /**
+     * Reads in the PRofile data to a parcel
+     * @param in
+     */
     protected Profile(Parcel in) {
         id = in.readLong();
         name = in.readString();
@@ -45,6 +61,9 @@ public class Profile implements Parcelable {
         recycledTotal = in.readDouble();
     }
 
+    /**
+     * Creator method to make the profile class parceleable
+     */
     public static final Creator<Profile> CREATOR = new Creator<Profile>() {
         @Override
         public Profile createFromParcel(Parcel in) {
@@ -57,38 +76,66 @@ public class Profile implements Parcelable {
         }
     };
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    /**
+     * returns the unique id
+     * @return id long
+     */
     public long getId() {
         return id;
     }
 
+    /**
+     * returns the name of the profile
+     * @return string name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * returns the password of the profile
+     * @return string password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * returns the money earned
+     * @return double money
+     */
     public double getMoneyEarned() {
         return moneyEarned;
     }
 
+    /**
+     * returns the recyceld total
+     * @return double recycled
+     */
     public double getRecycledTotal() {
         return recycledTotal;
     }
 
+    /**
+     * sets the name of the profile the param
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * sets the money earned
+     * @param moneyEarned
+     */
     public void setMoneyEarned(double moneyEarned) {
         this.moneyEarned = moneyEarned;
     }
 
+    /**
+     * sets the recyceld total
+     * @param recycledTotal
+     */
     public void setRecycledTotal(double recycledTotal) {
         this.recycledTotal = recycledTotal;
     }

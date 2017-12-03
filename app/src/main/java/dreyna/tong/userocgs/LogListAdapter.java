@@ -24,6 +24,9 @@ import java.util.List;
  * Created by Lelouch on 11/20/2017.
  */
 
+/**
+ * List adapter that handles listview population for the main menu and delete screen
+ */
 public class LogListAdapter extends ArrayAdapter<Logger> {
     private Context mContext;
     private List<Logger> mLogsList = new ArrayList<>();
@@ -33,6 +36,12 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
     private TextView descriptionTextView;
     private ImageView recieptImageView;
 
+    /**
+     * constructs a LogListAdapter
+     * @param c this comes from activity that this gets userd
+     * @param rId the resource
+     * @param logs log item
+     */
     public LogListAdapter(Context c, int rId, List<Logger> logs) {
         super(c, rId, logs);
         mContext = c;
@@ -40,6 +49,13 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
         mLogsList = logs;
     }
 
+    /**
+     *  inflates the view from the xml profile_item_xml
+     * @param pos
+     * @param convertView
+     * @param parent
+     * @return
+     */
     public View getView(int pos, View convertView, ViewGroup parent)
     {
 

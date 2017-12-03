@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+/**
+ * Home parent screen for the app that prompts the user to log in with credentials
+ */
 public class LoginActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
@@ -32,20 +35,20 @@ public class LoginActivity extends AppCompatActivity {
         allProfiles = db.getAllProfile();
 
 
-        Toast.makeText(LoginActivity.this, allProfiles.toString(), Toast.LENGTH_SHORT).show();
-        for (Profile p : allProfiles) {
-            Toast.makeText(LoginActivity.this, p.getName()+" "+p.getPassword(), Toast.LENGTH_SHORT).show();
-        }
+      //  Toast.makeText(LoginActivity.this, allProfiles.toString(), Toast.LENGTH_SHORT).show();
+       // for (Profile p : allProfiles) {
+          // Toast.makeText(LoginActivity.this, p.getName()+" "+p.getPassword(), Toast.LENGTH_SHORT).show();
+       // }
     }
 
     /**
-     * when the user clicks sign in button
+     * when the user clicks sign in button checks for a valid log in
      *
-     * @param view
+     * @param view the log in button
      */
     public void toMenuButtonClick(View view) {
         allProfiles = db.getAllProfile();
-/**TODO**/String usernameText = username.getText().toString();
+        String usernameText = username.getText().toString();
         String passwordText = password.getText().toString();
         boolean loginSuccess = false;
         if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
@@ -68,16 +71,29 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * resets the edit text views to blank
+     */
     public void resetViewText()
     {
        username.setText("");
         password.setText("");
     }
+
+    /**
+     * handles when the user clicks the create account button
+     * @param view create profile button
+     */
     public void toCreateAccount(View view) {
         resetViewText();
         startActivity(new Intent(this, CreateProfileActivity.class));
     }
 
+    /**\
+     * handles when the user clicks find us button
+     * @param view find Us button
+     */
     public void toMapClick(View view) {
         Intent toMapIntent = new Intent(this, MapActivity.class);
         startActivity(toMapIntent);

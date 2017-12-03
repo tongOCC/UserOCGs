@@ -20,6 +20,10 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+/**
+ * activity class that handles when the user navigates to the map activity
+ * diplays a google map api representation of the location
+ */
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -28,12 +32,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Location mMyLocation;
 
     private GoogleApiClient mGoogleApiClient;
-    //Last Location is the last latitude and longitude reported
+
     private Location mLastLocation;
-    //Location requests are made every x seconds (we configure this)
+
     private LocationRequest mLocationRequest;
 
     private static final Double LATITUDE= 33.675513,LONGITUDE =-117.910844;
+
+    /**
+     * starts and instantiates the views
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +52,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
+    /**
+     * Handles when the user clicks to contact button
+     * @param view the hours and avaiblity button
+     */
     public void toContactButton(View view) {
         Intent intent = new Intent(this,ContactActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * generates the google map
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap= googleMap;

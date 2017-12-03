@@ -58,35 +58,25 @@
         android:inputType="textPassword"
         android:textColor="@color/black" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/findUsButton"
-        android:layout_above="@id/linearLayout"
-        android:layout_marginBottom="40dp"
-        android:text="@string/find_us_text"
-        style="@style/Base.Widget.AppCompat.Button.Colored"
-        android:onClick="toMapClick"/>
-
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout">
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/signInButton"
+            android:id="@+id/findus"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="2"
-            android:onClick="toMenuButtonClick"
-            android:text="@string/login_buton_text" />
+            android:onClick="toMapClick"
+            android:text="@string/find_us_text" />
 
         <Button
             android:id="@+id/createProfileButton"
@@ -98,4 +88,17 @@
             android:onClick="toCreateAccount"
             android:text="@string/login_create_button" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/signInButton"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
+        android:onClick="toMenuButtonClick"
+        android:text="@string/login_buton_text" />
+
 </RelativeLayout>

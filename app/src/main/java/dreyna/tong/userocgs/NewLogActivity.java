@@ -29,6 +29,10 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Handles when the user navigates to the new log activity. allows the creation of new logs to be
+ * saved into the database
+ */
 public class NewLogActivity extends AppCompatActivity {
     private EditText PETplasticEditText;
     private EditText HDPEplasticEditText;
@@ -54,6 +58,10 @@ public class NewLogActivity extends AppCompatActivity {
     private final double PETPLASTIC_PRICE= 1.23;
     private final double HDPEPLASTIC_PRICE= .56;
 
+    /**
+     * starts and instantiates views
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +87,10 @@ public class NewLogActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * handles when the user clicks the save and exit views
+     * @param view
+     */
     public void saveLogToDatabase(View view) {
         String username;
         //if(yourProfile.equals(null))

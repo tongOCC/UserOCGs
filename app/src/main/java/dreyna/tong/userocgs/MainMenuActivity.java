@@ -15,6 +15,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main menu for the app that displays all the current users logs
+ */
 public class MainMenuActivity extends AppCompatActivity {
     private static final String TAG = MainMenuActivity.class.getSimpleName();
     private DBHelper db;
@@ -29,6 +32,10 @@ private boolean touchOn;
     private String name;
     private Profile yourProfile;
 
+    /**
+     * starts and instantiates the app
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +50,6 @@ private boolean touchOn;
 
         LogListAdapter = new LogListAdapter(this, R.layout.profile_list_item, filteredLogs);
         logListView.setAdapter(LogListAdapter);
-        Toast.makeText(MainMenuActivity.this, filteredLogs.toString(), Toast.LENGTH_LONG).show();
     }
 
     public void logOutOnClick(View view) {
@@ -56,6 +62,10 @@ private boolean touchOn;
 
     }
 
+    /**
+     * handles when the user clicks on add recycle button send sthe profile data over for later use
+     * @param view add recycle button
+     */
     public void HandleRecycleButton(View view) {
 
         Intent intent = new Intent(this, NewLogActivity.class);
@@ -65,6 +75,11 @@ private boolean touchOn;
 
     }
 
+    /**
+     * handles when the user clicks the view details button grabs the info of the specific log
+     * and sends it to the details activity
+     * @param view the item selected from the views
+     */
     public void viewDetails(View view) {
         LinearLayout select = (LinearLayout) view;
         Logger selectedLog = (Logger) select.getTag();
@@ -82,7 +97,11 @@ private boolean touchOn;
         startActivity(detailsIntent);
     }
 
-
+    /**
+     * handles when the user clicks the view stats button compiles all the data of thier logs from
+     * the database to display all of thier stats
+     * @param view view stats button
+     */
     public void ViewStatsButtonOnClick(View view) {
         Intent viewStatsIntent= new Intent(this, ViewStatsActivity.class);
         Double totalPounds=0.0;
@@ -107,6 +126,10 @@ private boolean touchOn;
         viewStatsIntent.putExtra("totalEnergySaved",energySaved);
         startActivity(viewStatsIntent);
     }
+
+    /**
+     * method for getting logs from the database into all logs list
+     */
     public void getLogsFromDB()
     {
         allLogsList = db.getAllLogs();
@@ -120,7 +143,10 @@ private boolean touchOn;
         }
     }
 
-
+    /**
+     * handles when the user clicsk the delete logs button
+     * @param view the delte logs button
+     */
     public void deleteLogMenuButtonClick(View view) {
         Intent intent= new Intent(this,DeleteLogActivity.class);
 

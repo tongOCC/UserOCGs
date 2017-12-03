@@ -8,6 +8,9 @@ import android.os.Parcelable;
  * Created by Lelouch on 11/22/2017.
  */
 
+/**
+ * logger class the stores id name date money_earned, total_recycled, and Uri Image
+ */
 public class Logger implements Parcelable {
     private long id;
     private String name;
@@ -16,6 +19,10 @@ public class Logger implements Parcelable {
     private double total_recycled;
     private Uri reciept_image;
 
+    /**
+     * method to make a parceable object
+     * @param in
+     */
     protected Logger(Parcel in) {
         id = in.readLong();
         name = in.readString();
@@ -25,6 +32,9 @@ public class Logger implements Parcelable {
         reciept_image = in.readParcelable(Uri.class.getClassLoader());
     }
 
+    /**
+     * creator method for making the the logger object parceable
+     */
     public static final Creator<Logger> CREATOR = new Creator<Logger>() {
         @Override
         public Logger createFromParcel(Parcel in) {
@@ -37,14 +47,24 @@ public class Logger implements Parcelable {
         }
     };
 
+    /**
+     * gets the id
+     * @return long id
+     */
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
+    /**
+     * constructor for logger object
+     * @param id unique identifier
+     * @param name username data
+     * @param date the date in string
+     * @param money_earned double money
+     * @param total_recycled double recyceld
+     * @param reciept_image Uri image
+     */
     public Logger(long id, String name, String date, double money_earned, double total_recycled, Uri reciept_image) {
         this.id = id;
         this.name = name;
@@ -54,6 +74,14 @@ public class Logger implements Parcelable {
         this.reciept_image=reciept_image;
     }
 
+    /**
+     * default constructor for a logger object
+     * @param name username data
+     * @param date the date in string
+     * @param money_earned double money
+     * @param total_recycled double recyceld
+     * @param reciept_image Uri image
+     */
     public Logger(String name, String date, double money_earned, double total_recycled, Uri reciept_image) {
         this.id= -1;
         this.name = name;
@@ -63,38 +91,74 @@ public class Logger implements Parcelable {
         this.reciept_image=reciept_image;
     }
 
+    /**
+     * gets the loggers uri image
+     * @return
+     */
     public Uri getReciept_image() {
         return reciept_image;
     }
 
+    /**
+     * sets the Uri image
+     * @param reciept_image the uri image to replace with
+     */
     public void setReciept_image(Uri reciept_image) {
         this.reciept_image = reciept_image;
     }
 
+    /**
+     * gets the name on the logger
+     * @return string name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * gets the date
+     * @return string date
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     * sets the date to the parameter
+     * @param date the date to replace with
+     */
     public void setDate(String date) {
         this.date = date;
     }
 
+    /**
+     * returns the money
+     * @return
+     */
     public double getMoney_earned() {
         return money_earned;
     }
 
+    /**
+     * sets the money earned
+     * @param money_earned replaces the money value with the param
+     */
     public void setMoney_earned(double money_earned) {
         this.money_earned = money_earned;
     }
 
+    /**
+     * returns the total recyceld of the logger
+     * @return
+     */
     public double getTotal_recycled() {
         return total_recycled;
     }
 
+    /**
+     * sets the total recyceled value in the logger
+     * @param total_recycled
+     */
     public void setTotal_recycled(double total_recycled) {
         this.total_recycled = total_recycled;
     }
@@ -116,6 +180,11 @@ public class Logger implements Parcelable {
         return 0;
     }
 
+    /**
+     * wirtes the logger into a parcel
+     * @param parcel
+     * @param i
+     */
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeLong(id);

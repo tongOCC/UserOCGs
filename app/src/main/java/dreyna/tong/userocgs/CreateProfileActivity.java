@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+/**
+ * Class for the Create profile.xml Activity that handles all the logic for creating an account
+ */
 public class CreateProfileActivity extends AppCompatActivity {
     private EditText createAccountUsername;
     private EditText createAccountPassword;
@@ -17,6 +20,11 @@ public class CreateProfileActivity extends AppCompatActivity {
     private Button backToLoginScreenButton;
     private DBHelper db;
     private List<Profile> allProfiles;
+
+    /**
+     * handles when the activity gets first created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +41,11 @@ public class CreateProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * createAccountButtonClick handles when the user clicks the create account button
+     * checks for a valid sign up and then adds to profile database
+     * @param view the create profile button
+     */
     public void createAccountButtonClick(View view) {
         if(!createAccountUsername.getText().toString().equals("") ||
                 !createAccountPassword.getText().toString().equals("") ||
@@ -70,13 +83,21 @@ public class CreateProfileActivity extends AppCompatActivity {
         else
             Toast.makeText(CreateProfileActivity.this, R.string.incorrect_input_Toast, Toast.LENGTH_SHORT).show();
     }
-public void resetViewText()
+
+    /**
+     * method for resetting the views text to empty
+     */
+    public void resetViewText()
 {
     createAccountConfirmPassword.setText("");
     createAccountUsername.setText("");
     createAccountConfirmPassword.setText("");
 }
 
+    /**
+     * Handles when the user clicks the back to login button and sends the user back to the login activity
+     * @param view BacktoLoginButton view
+     */
     public void HandleBackToLoginClick(View view) {
         resetViewText();
         Intent intent = new Intent(this, LoginActivity.class);

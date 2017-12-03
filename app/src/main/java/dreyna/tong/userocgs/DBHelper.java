@@ -22,11 +22,8 @@ import static java.lang.Integer.parseInt;
 class DBHelper extends SQLiteOpenHelper {
 
     private Context mContext;
-
-    //TASK: DEFINE THE DATABASE VERSION AND NAME  (DATABASE CONTAINS MULTIPLE TABLES)
     static final String DATABASE_NAME = "RecyclingLOGG";
     private static final int DATABASE_VERSION = 1;
-
 
     private static final String PROFILE_TABLE = "Profiles";
     private static final String PROFILE_KEY_FIELD_ID = "_id";
@@ -44,12 +41,19 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_LOGTOTAL_RECYCLED = "total_recycled";
     private static final String FIELD_URI_IMAGE_RECIEPT= "image_uri";
 
-
+    /**
+     * constructs a new DBhelper given a context
+     * @param context
+     */
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         mContext = context;
     }
 
+    /**
+     * creates the tables used in the database
+     * @param database contains two databases the LOG_TABLE and PROFILE_TABLE
+     */
     @Override
     public void onCreate(SQLiteDatabase database) {
         String createQuery = "CREATE TABLE " + PROFILE_TABLE + "("
@@ -70,6 +74,12 @@ class DBHelper extends SQLiteOpenHelper {
         database.execSQL(createQuery);
     }
 
+    /**
+     * Any changes to the table, tables get dropped
+     * @param database PROFILE_TABLE, LOG_TABLE
+     * @param oldVersion previous data
+     * @param newVersion new data
+     */
     @Override
     public void onUpgrade(SQLiteDatabase database,
                           int oldVersion,
@@ -80,7 +90,10 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
+    /**
+     * adds a new profile object to the database
+     * @param profile stores a profile with name password,money earned, and total recycled
+     */
     public void addProfile(Profile profile) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -95,6 +108,10 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * gets all the profiles in the database
+     * @return List<Profile>
+     */
     public List<Profile> getAllProfile() {
         List<Profile> profileList = new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();
@@ -122,6 +139,10 @@ class DBHelper extends SQLiteOpenHelper {
         return profileList;
     }
 
+    /**
+     * deletes a profile from the database
+     * @param profile the profile to be deleted
+     */
     public void deleteProfiles(Profile profile) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -131,12 +152,19 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * deletes all profiles in the database
+     */
     public void deleteAllProfiles() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(PROFILE_TABLE, null, null);
         db.close();
     }
 
+    /**
+     * updates the object's data within the database
+     * @param profile the profile to be updated
+     */
     public void updateProfile(Profile profile) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -151,6 +179,11 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * gets a profile its id
+     * @param id the unique number for the profile
+     * @return a Profile Object
+     */
     public Profile getProfile(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
@@ -181,6 +214,11 @@ class DBHelper extends SQLiteOpenHelper {
 
 
 // LOG DATABASE STUFF
+
+    /**
+     * adds a log to the Log database
+     * @param logRecycle the log to be saved into the database
+     */
     public void addLOG(Logger logRecycle) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -197,6 +235,10 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * gets all the logs in the database
+     * @return returns a list<Logger>
+     */
     public List<Logger> getAllLogs() {
         List<Logger> loggerList = new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();
@@ -225,6 +267,10 @@ class DBHelper extends SQLiteOpenHelper {
         return loggerList;
     }
 
+    /**
+     * deletes a single log
+     * @param loggedLog log to be deleted
+     */
     public void deleteLog(Logger loggedLog) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -234,12 +280,19 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * deletes all the logs in the database
+     */
     public void deleteAllLogs() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(LOG_TABLE, null, null);
         db.close();
     }
 
+    /**
+     * updates the parameter logs data
+     * @param loggedLog the log to be updated
+     */
     public void updateLOGs(Logger loggedLog) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -255,6 +308,11 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * gets the log from its id
+     * @param id the unique identifier of the log
+     * @return the log at id
+     */
     public Logger getLog(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
@@ -284,41 +342,4 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
 }
-
-//********** IMPORT FROM CSV OPERATIONS:  Courses, Instructors and Offerings
-//DONE:  Write the code for the import OfferingsFromCSV method.
-
-
-   /* public boolean importInstructorsFromCSV(String csvFileName) {
-        AssetManager am = mContext.getAssets();
-        InputStream inStream = null;
-        try {
-            inStream = am.open(csvFileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(inStream));
-        String line;
-        try {
-            while ((line = buffer.readLine()) != null) {
-                String[] fields = line.split(",");
-                if (fields.length != 4) {
-                    Logger.d("OCC Course Finder", "Skipping Bad CSV Row: " + Arrays.toString(fields));
-                    continue;
-                }
-                int id = parseInt(fields[0].trim());
-                String lastName = fields[1].trim();
-                String firstName = fields[2].trim();
-                String email = fields[3].trim();
-                addInstructor(new Profile(, lastName, firstName, email));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-    **/
-
-
 

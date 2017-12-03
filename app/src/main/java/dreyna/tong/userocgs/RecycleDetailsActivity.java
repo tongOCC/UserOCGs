@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+/**
+ * handles when the user naviagates the RecycleDetails activity
+ * displays the log data from the listView htat was selected
+ */
 public class RecycleDetailsActivity extends AppCompatActivity {
 private ImageView recieptImage;
 private TextView DetailsTextView;
