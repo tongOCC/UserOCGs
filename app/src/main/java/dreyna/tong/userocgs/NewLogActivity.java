@@ -100,6 +100,7 @@ public class NewLogActivity extends AppCompatActivity {
         String date= DateFormat.getDateTimeInstance().format(new Date());
         Double money_earned, total_recycle;
         Double PETplasticLB, HDPEplasticLB, BimetalLB, glassLB, alumminumLB;
+
         if(PETplasticEditText.getText().toString().equals(""))
             PETplasticEditText.setText("0");
 
@@ -217,7 +218,7 @@ public class NewLogActivity extends AppCompatActivity {
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
                 }
                 // start activity for aour results the picture that the user selected
-                startActivityForResult(takePictureIntent,1);
+
 
             }
 

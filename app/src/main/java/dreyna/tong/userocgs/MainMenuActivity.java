@@ -106,19 +106,57 @@ private boolean touchOn;
         Intent viewStatsIntent= new Intent(this, ViewStatsActivity.class);
         Double totalPounds=0.0;
         Double totalMoneyEarned=0.0;
-        Double TotalEnergySaved=0.0;
-
+        Double EnergySavedAlluminum=0.0;
+        Double EnergySavedGlass=0.0;
+        Double EnergySavedHDPEplastic=0.0;
+        Double EnergySavedPETplastic=0.0;
+        Double GasAlluminum=0.0;
+        Double GasGlass=0.0;
+        Double GasHDPE=0.0;
+        Double GasPET=0.0;
+Double lbToTons;
             for(Logger Logs: filteredLogs)
                 {
                     totalPounds+=Logs.getTotal_recycled();
                     totalMoneyEarned+=Logs.getMoney_earned();
     //TODO need energy save formula;
-                    TotalEnergySaved=-1.0;
+
                 }
+                lbToTons = totalPounds/2000.0;
+
+        EnergySavedAlluminum = lbToTons*1027.0;
+
+        EnergySavedGlass = lbToTons*33.0;
+
+        EnergySavedHDPEplastic = lbToTons*128.0;
+
+        EnergySavedPETplastic = lbToTons*100.0;
+
+        GasAlluminum = lbToTons*9.1;
+
+        GasGlass = lbToTons*.293;
+
+        GasHDPE = lbToTons*1.1;
+
+        GasPET = lbToTons*.889;
+
         DecimalFormat twoPlaces = new DecimalFormat("0.00");
         String money=String.valueOf(twoPlaces.format(totalMoneyEarned));
         String RecyceledTotal = String.valueOf(twoPlaces.format(totalPounds));
-        String energySaved= String.valueOf(twoPlaces.format(TotalEnergySaved));
+        String energySaved=
+                 getString(R.string.allText)+"\n"
+                +getString(R.string.AlluminumGasText)+" "+ String.valueOf(twoPlaces.format(GasAlluminum))+" "+getString(R.string.Gallons)+"\n"
+                +getString(R.string.GlassGasText)+" "+ String.valueOf(twoPlaces.format(GasGlass))+" "+getString(R.string.Gallons)+"\n"
+                +getString(R.string.HDPEGasText)+" "+ String.valueOf(twoPlaces.format(GasHDPE))+" "+getString(R.string.Gallons)+"\n"
+                +getString(R.string.PETGasText)+" "+ String.valueOf(twoPlaces.format(GasPET))+" "+getString(R.string.Gallons)+"\n"
+                         +"-----------------------------------------------------------------"+"\n"
+                +getString(R.string.CO2Conserved)+"\n\n"
+                +getString(R.string.allText)+"\n"
+                +getString(R.string.AlluminumCO2Text)+" "+ String.valueOf(twoPlaces.format(EnergySavedAlluminum))+" "+getString(R.string.MTCCO2)+"\n"
+                +getString(R.string.GlassCO2Text)+" "+ String.valueOf(twoPlaces.format(EnergySavedGlass))+" "+getString(R.string.MTCCO2)+"\n"
+                +getString(R.string.HDPECO2Text)+" "+ String.valueOf(twoPlaces.format(EnergySavedHDPEplastic))+" "+getString(R.string.MTCCO2)+"\n"
+                +getString(R.string.PETCO2Text)+" "+ String.valueOf(twoPlaces.format(EnergySavedPETplastic))+" "+getString(R.string.MTCCO2)+"\n";
+
 
         viewStatsIntent.putExtra("profileName", yourProfile.getName());
         viewStatsIntent.putExtra("totalPounds", RecyceledTotal);

@@ -48,4 +48,17 @@
     <string name="failedDeletedSelectedItems">" Sin cambios para guardar"</string>
     <string name="contact_infoALLINFO">" Sitio web: orangecoastcollege.edu Número de teléfono (714) 432-5131 Viernes 9 AM-5PM Sábado 9 AM-5 PM Domingo cerrado lunes 9 AM-5PM Martes 9 AM-5PM Miércoles 9 AM-5PM Jueves 9 AM-5PM"</string>
     <string name="backToMap">" Regresar a los mapas"</string>
+    <string name="Gallons">" Galones"</string>
+    <string name="AmountTonsRecycled">" Cantidad de Toneladas recicladas:"</string>
+    <string name="GasConserved">" Galones de gasolina conservados:"</string>
+    <string name="AlluminumGasText">" Aluminio Reciclado:"</string>
+    <string name="allText">Si fuera todo</string>
+    <string name="GlassGasText">Vidrio Reciclado:</string>
+    <string name="HDPEGasText">" HDPE Plástico Reciclado:"</string>
+    <string name="PETGasText">" PET reciclado de plástico:"</string>
+    <string name="CO2Conserved">" Toneladas métricas de CO 2 conservadas:"</string>
+    <string name="AlluminumCO2Text">" Aluminio Reciclado:"</string>
+    <string name="GlassCO2Text">Vidrio Reciclado:</string>
+    <string name="HDPECO2Text">HDPE Plástico Reciclado:</string>
+    <string name="PETCO2Text">PET reciclado de plástico:</string>
 </resources>

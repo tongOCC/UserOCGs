@@ -32,7 +32,7 @@ public class ViewStatsActivity extends AppCompatActivity {
         personalStatsNameTextView.setText(getString(R.string.usernameForStats)+" "+intent.getStringExtra("profileName"));
         personalStatsPoundsTextView.setText(getString(R.string.yourStatsPounds)+ " " +intent.getStringExtra("totalPounds"));
         personalStatsMoneyEarnedTextView.setText(getString(R.string.yourStatsMoneyEarned)+" $"+  intent.getStringExtra("totalMoneyEarned"));
-        personalStatsEnergySavedTextView.setText(getString(R.string.yourStatsEnergySaved)+" "+ intent.getStringExtra("totalEnergySaved"));
+        personalStatsEnergySavedTextView.setText(intent.getStringExtra("totalEnergySaved"));
 
     }
 

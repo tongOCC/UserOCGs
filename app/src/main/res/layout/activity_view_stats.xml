@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginLeft="10dp"
     android:layout_height="match_parent"
     android:background="@drawable/tree"
     android:layout_margin="5dp"
@@ -12,15 +13,17 @@
     <TextView
         android:id="@+id/StatsNameTextView"
         android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
         android:layout_height="0dp"
         android:textColor="@color/colorAccent"
         android:layout_weight="1"
-        android:textSize="50dp"
+        android:textSize="30dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/StatsAllMoneyEarned"
         android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textColor="@color/colorAccent"
@@ -31,6 +34,7 @@
         android:id="@+id/StatsTotalPoundsRecycledTextView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
         android:textSize="20dp"
         android:textColor="@color/colorAccent"
         android:layout_weight="1"
@@ -41,8 +45,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:textSize="20dp"
+        android:layout_marginLeft="10dp"
         android:textColor="@color/colorAccent"
-        android:layout_weight="1"
+        android:layout_weight="9"
         android:text="TextView" />
 
     <Button
