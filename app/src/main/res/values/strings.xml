@@ -48,7 +48,7 @@
     <string name="yourStatsEnergySaved">Your energy saved: watts </string>
     <string name="saveChanges">Save Changes</string>
     <string name="InstructionsForDeletionTextView">Press and hold down the log you wish to delete..</string>
-    <string name="successfullyDeletedSelectedItems">Successfully deleted Selected Logs</string>
+    <string name="successfullyDeletedSelectedItems">Successfully saved Logs</string>
     <string name="failedDeletedSelectedItems">No changes to save</string>
     <string name="contact_infoALLINFO">WebSite: orangecoastcollege.edu  Phone Number(714) 432-5131  Friday 9AM–5PM   Saturday 9AM–5PM  Sunday Closed  Monday 9AM–5PM  Tuesday 9AM–5PM  Wednesday 9AM–5PM  Thursday 9AM–5PM</string>
     <string name="backToMap">Back to maps</string>

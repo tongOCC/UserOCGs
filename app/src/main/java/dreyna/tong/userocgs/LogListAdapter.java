@@ -90,6 +90,7 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
             return view;
         }
 
+
 }
 
 

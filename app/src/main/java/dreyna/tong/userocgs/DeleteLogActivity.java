@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -29,6 +31,7 @@ public class DeleteLogActivity extends AppCompatActivity
     private List<Logger> deletedLogs= new ArrayList<>();
     private Profile yourProfile;
     private LogListAdapter LogListAdapter;
+             private Animation mShakeAnim;
 
 
              /**
@@ -96,7 +99,10 @@ public class DeleteLogActivity extends AppCompatActivity
               db.deleteLog(L);
 
           }
+          mShakeAnim= AnimationUtils.loadAnimation(this, R.anim.shake_anim);
+          DeleteListView.startAnimation(mShakeAnim);
           Toast.makeText(DeleteLogActivity.this, R.string.successfullyDeletedSelectedItems, Toast.LENGTH_SHORT).show();
+          deletedLogs.clear();
 
       }
       else

@@ -1,5 +1,7 @@
 package dreyna.tong.userocgs;
 
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -50,6 +53,9 @@ private boolean touchOn;
 
         LogListAdapter = new LogListAdapter(this, R.layout.profile_list_item, filteredLogs);
         logListView.setAdapter(LogListAdapter);
+
+
+
     }
 
     public void logOutOnClick(View view) {
@@ -74,6 +80,9 @@ private boolean touchOn;
         startActivity(intent);
 
     }
+
+
+
 
     /**
      * handles when the user clicks the view details button grabs the info of the specific log
