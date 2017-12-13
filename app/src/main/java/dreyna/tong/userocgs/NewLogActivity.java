@@ -169,7 +169,7 @@ public class NewLogActivity extends AppCompatActivity {
         return Uri.parse(uri);
 
     }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK && data!= null)
         {
@@ -183,7 +183,7 @@ public class NewLogActivity extends AppCompatActivity {
      * uses a camera intent to save the users receipt and changes the image of the icon to be saved
      * @param view
      */
-    protected void pictureLogSave(View view) {
+    public void pictureLogSave(View view) {
             List<String> permissionList= new ArrayList<>();
             // check each permission individually
             int hasCameraPerm= ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
