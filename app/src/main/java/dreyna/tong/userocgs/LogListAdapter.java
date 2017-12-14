@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
     private TextView nameTextView;
     private TextView descriptionTextView;
     private ImageView recieptImageView;
+    private Uri mUri;
 
     /**
      * constructs a LogListAdapter
@@ -78,14 +80,21 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
         nameTextView.setText(logs.getName());
         descriptionTextView.setText("Date: " + logs.getDate() + "\nMoney Earned: $" + String.valueOf(twoPlaces.format(logs.getMoney_earned()))
                 + "\nTotal Recycled: LB(s) " + String.valueOf(logs.getTotal_recycled()));
+
+
+        mUri = logs.getReciept_image();
         try {
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext.getContentResolver(), logs.getReciept_image());
-            bitmap = Bitmap.createScaledBitmap(bitmap, 100, 150, true);
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext.getContentResolver(), mUri);
+            bitmap = Bitmap.createScaledBitmap(bitmap,
+                    (int) (bitmap.getWidth()*0.1),
+                    (int) (bitmap.getHeight()*0.1), true);
+
             recieptImageView.setImageBitmap(bitmap);
         } catch (IOException e) {
-            Log.e("MovieListAdapter", "Error getting bitmap from: " + logs.getReciept_image().toString(), e);
+            Log.e("MovieListAdapter", "Error getting bitmap from: " + mUri.toString(), e);
         }
-            recieptImageView.setImageURI(logs.getReciept_image());
+
+
             logListLinearLayout.setTag(logs);
             return view;
         }
