@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -26,7 +30,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private DBHelper db;
     private List<Profile> allProfiles;
     private ListView logListView;
-
+    private RecyclerView recycleView;
     private List<Logger> allLogsList = new ArrayList<>();
     private List<Logger> filteredLogs = new ArrayList<>();
 private boolean touchOn;
@@ -34,6 +38,8 @@ private boolean touchOn;
     private LogListAdapter LogListAdapter;
     private String name;
     private Profile yourProfile;
+
+
 
     /**
      * starts and instantiates the app
@@ -45,12 +51,10 @@ private boolean touchOn;
         setContentView(R.layout.activity_main_menu);
 
         logListView = (ListView) findViewById(R.id.listViewMainMenu);
-
         db = new DBHelper(this);
 
         allProfiles = db.getAllProfile();
         getLogsFromDB();
-
         LogListAdapter = new LogListAdapter(this, R.layout.profile_list_item, filteredLogs);
         logListView.setAdapter(LogListAdapter);
 
@@ -81,7 +85,11 @@ private boolean touchOn;
 
     }
 
-
+    static class ViewHolder {
+        TextView nameTextView;
+        TextView descriptionTextView;
+        ImageView personImageView;
+    }
 
 
     /**

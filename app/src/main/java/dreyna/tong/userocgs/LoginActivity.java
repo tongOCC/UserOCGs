@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**\
      * handles when the user clicks find us button
-     * @param view find Us button
+     * @param view find Us buttonLo
      */
     public void toMapClick(View view) {
         Intent toMapIntent = new Intent(this, MapActivity.class);

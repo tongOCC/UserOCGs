@@ -157,6 +157,11 @@ public class NewLogActivity extends AppCompatActivity {
         intent.putExtra("profileName", yourProfile );
         startActivity(intent);
     }
+
+
+
+
+
     public static Uri getUriFromResource(Context context, int resID)
     {
         Resources res= context.getResources();

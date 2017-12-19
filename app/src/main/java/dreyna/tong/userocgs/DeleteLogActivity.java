@@ -65,6 +65,7 @@ public class DeleteLogActivity extends AppCompatActivity
                  {
                      if(deleteLog.equals(logCheck))
                         {
+
                         filteredLogs.remove(deleteLog);
                         LogListAdapter.notifyDataSetChanged();
                         deletedLogs.add(deleteLog);
