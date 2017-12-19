@@ -40,7 +40,7 @@ public class LogListAdapter extends ArrayAdapter<Logger> {
     private TextView nameTextView;
     private TextView descriptionTextView;
     private ImageView recieptImageView;
-
+private String tev= "hi";
     /**
      * constructs a LogListAdapter
      *
