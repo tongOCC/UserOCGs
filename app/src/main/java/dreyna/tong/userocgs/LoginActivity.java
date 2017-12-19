@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -19,18 +23,60 @@ public class LoginActivity extends AppCompatActivity {
     private DBHelper db;
     private List<Profile> allProfiles;
     private String name;
+    private Animation mFromRightAnim;
+    private Animation mFromBottomAnim;
+    private Animation mFromLeftAnim;
+    private Animation mFadeOutAnim;
+    private ImageView mRecycleLogo;
+    private ImageView mPirateImage;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        username = (EditText) findViewById(R.id.usernameloginScreenEditText);
+        password = (EditText) findViewById(R.id.passwordLogInEditText);
+        mPirateImage = (ImageView) findViewById(R.id.pirateImageView);
+        mRecycleLogo = (ImageView) findViewById(R.id.recycleLogoImageView);
+
+        mFromLeftAnim = AnimationUtils.loadAnimation(this, R.anim.in_from_left);
+        mFromRightAnim = AnimationUtils.loadAnimation(this, R.anim.in_from_right);
+        mFadeOutAnim = AnimationUtils.loadAnimation(this, R.anim.fade_out_anim);
+
+        username.setEnabled(false);
+        password.setEnabled(false);
+        mPirateImage.startAnimation(mFromRightAnim);
+        mRecycleLogo.startAnimation(mFromLeftAnim);
+
+
+        mPirateImage.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPirateImage.startAnimation(mFadeOutAnim);
+                mRecycleLogo.startAnimation(mFadeOutAnim);
+
+
+            }
+        }, 1400);
+        mRecycleLogo.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPirateImage.setVisibility(View.GONE);
+                mRecycleLogo.setVisibility(View.GONE);
+                username.setEnabled(true);
+                password.setEnabled(true);
+            }
+        }, 2400);
+
+
+//        mShakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_anim);
+//        mRelativeLayout.startAnimation(mShakeAnim);
 
         db = new DBHelper(this);
        // db.deleteAllLogs();
        // db.deleteAllProfiles();
-        username = (EditText) findViewById(R.id.usernameloginScreenEditText);
-        password = (EditText) findViewById(R.id.passwordLogInEditText);
+
 
         allProfiles = db.getAllProfile();
 
