@@ -1,6 +1,7 @@
 package dreyna.tong.userocgs;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,8 @@ public class ViewStatsActivity extends AppCompatActivity {
         personalStatsMoneyEarnedTextView=(TextView) findViewById(R.id.StatsAllMoneyEarned);
         personalStatsNameTextView=(TextView)findViewById(R.id.StatsNameTextView);
         personalStatsPoundsTextView= (TextView) findViewById(R.id.StatsTotalPoundsRecycledTextView);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
 
         Intent intent= getIntent();
 //

@@ -4,6 +4,7 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -49,11 +50,13 @@ private boolean touchOn;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
         logListView = (ListView) findViewById(R.id.listViewMainMenu);
         db = new DBHelper(this);
 
         allProfiles = db.getAllProfile();
+
         getLogsFromDB();
         LogListAdapter = new LogListAdapter(this, R.layout.profile_list_item, filteredLogs);
         logListView.setAdapter(LogListAdapter);

@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -66,8 +67,11 @@ public class NewLogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_log);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
 
         db = new DBHelper(this);
+
         PETplasticEditText= (EditText) findViewById(R.id.PETPlasticEditText);
         HDPEplasticEditText= (EditText) findViewById(R.id.HDPEPlasticEditText);
         BiMetalEditText= (EditText) findViewById(R.id.bimetalEditText);
@@ -154,6 +158,7 @@ public class NewLogActivity extends AppCompatActivity {
         }, 10000);
         Intent intent= new Intent(this, MainMenuActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
         intent.putExtra("profileName", yourProfile );
         startActivity(intent);
     }

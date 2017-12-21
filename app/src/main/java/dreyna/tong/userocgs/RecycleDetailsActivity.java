@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,8 @@ private Uri imageUri;
         DetailsTextView= (TextView) findViewById(R.id.DetailsTextView);
         RecycledTextView= (TextView) findViewById(R.id.DetailsRecycledDone);
         dateTextView=(TextView) findViewById(R.id.DetailsDateTextView);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
 
 
 Intent intent= getIntent();
