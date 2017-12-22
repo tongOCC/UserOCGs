@@ -74,8 +74,8 @@ public class LoginActivity extends AppCompatActivity {
 //        mRelativeLayout.startAnimation(mShakeAnim);
 
         db = new DBHelper(this);
-       // db.deleteAllLogs();
-       // db.deleteAllProfiles();
+        //db.deleteAllLogs();
+        //db.deleteAllProfiles();
 
 
         allProfiles = db.getAllProfile();
