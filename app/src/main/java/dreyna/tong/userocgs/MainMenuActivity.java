@@ -178,10 +178,11 @@ Double lbToTons;
                 +getString(R.string.PETCO2Text)+" "+ String.valueOf(twoPlaces.format(EnergySavedPETplastic))+" "+getString(R.string.MTCCO2)+"\n";
 
 
-        viewStatsIntent.putExtra("profileName", yourProfile.getName());
+        viewStatsIntent.putExtra("Name", yourProfile.getName());
         viewStatsIntent.putExtra("totalPounds", RecyceledTotal);
         viewStatsIntent.putExtra("totalMoneyEarned",money);
         viewStatsIntent.putExtra("totalEnergySaved",energySaved);
+        viewStatsIntent.putExtra("profileName", yourProfile);
         startActivity(viewStatsIntent);
     }
 

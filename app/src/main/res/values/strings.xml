@@ -66,5 +66,6 @@
     <string name="GlassCO2Text">Glass Recycled: </string>
     <string name="HDPECO2Text">HDPE Plastic Recycled: </string>
     <string name="PETCO2Text">PET Plastic Recycled:</string>
+    <string name="emailStats">Email Stats</string>
 
 </resources>
