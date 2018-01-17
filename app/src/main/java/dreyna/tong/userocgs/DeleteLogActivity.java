@@ -2,6 +2,7 @@ package dreyna.tong.userocgs;
 
 import android.content.Intent;
 import android.gesture.Gesture;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -42,7 +43,8 @@ public class DeleteLogActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_log);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
         db = new DBHelper(this);
         allLogsList = db.getAllLogs();
 
