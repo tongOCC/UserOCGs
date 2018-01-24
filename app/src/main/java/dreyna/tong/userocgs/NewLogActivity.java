@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.NetworkOnMainThreadException;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -14,14 +15,20 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -34,15 +41,16 @@ import java.util.TimerTask;
  * Handles when the user navigates to the new log activity. allows the creation of new logs to be
  * saved into the database
  */
-public class NewLogActivity extends AppCompatActivity {
+public class NewLogActivity extends AppCompatActivity{
     private EditText PETplasticEditText;
     private EditText HDPEplasticEditText;
     private EditText BiMetalEditText;
     private EditText GlassEditText;
     private EditText AlluminumEditText;
-
+private Button ManualInputButton;
     private Profile yourProfile;
     private TextView totalTextView;
+    private TextView updatedPricesText;
     private ImageView logImageView;
     private String name;
     private Uri imageUri;
@@ -52,12 +60,12 @@ public class NewLogActivity extends AppCompatActivity {
     private static final int DENIED=PackageManager.PERMISSION_DENIED;
 
     private DBHelper db;
-
-    private final double ALUMINUM_PRICE= 1.56;
-    private final double GLASS_PRICE= .104;
-    private final double BIMETAL_PRICE= .34;
-    private final double PETPLASTIC_PRICE= 1.23;
-    private final double HDPEPLASTIC_PRICE= .56;
+private String result="";
+    double ALUMINUM_PRICE= 0;
+    double GLASS_PRICE= 0;
+    double BIMETAL_PRICE= 0;
+    double PETPLASTIC_PRICE= 0;
+    double HDPEPLASTIC_PRICE=0;
 
     /**
      * starts and instantiates views
@@ -70,18 +78,29 @@ public class NewLogActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
 
-        db = new DBHelper(this);
+//        try {
+//            getWebsite();
+//        } catch (MalformedURLException e) {
+//            Toast.makeText(NewLogActivity.this, "Could not update", Toast.LENGTH_SHORT).show();
+//        }
 
+
+        db = new DBHelper(this);
+updatedPricesText=(TextView) findViewById(R.id.updatedPricesText);
         PETplasticEditText= (EditText) findViewById(R.id.PETPlasticEditText);
         HDPEplasticEditText= (EditText) findViewById(R.id.HDPEPlasticEditText);
         BiMetalEditText= (EditText) findViewById(R.id.bimetalEditText);
         GlassEditText= (EditText) findViewById(R.id.glassEditText);
         AlluminumEditText= (EditText) findViewById(R.id.aluminumPoundsEditText);
+        ManualInputButton=(Button) findViewById(R.id.ManualInputButton);
         totalTextView=(TextView) findViewById(R.id.pricedAmountTextView);
         logImageView=(ImageView) findViewById(R.id.logRecieptImageView);
         imageUri=getUriFromResource(this,R.drawable.receipt_icon);
+
         logImageView.setImageURI(imageUri);
         Intent intent= getIntent();
+
+        updatedPricesText.setText(result);
        // yourProfile= intent.getExtras().getParcelable("profileObject");
         //if(yourProfile.equals(null))
        // {
@@ -233,6 +252,41 @@ public class NewLogActivity extends AppCompatActivity {
             }
 
         }
+    private void getWebsite() throws MalformedURLException {
+        URL oracle = new URL("http://www.orangecoastcollege.edu/about_occ/recycling-center/Pages/Pricing-Details.aspx");
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(
+                    new InputStreamReader(oracle.openStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        String inputLine;
+        try {
+            while ((inputLine = in.readLine()) != null)
+                result=inputLine+"\n";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (android.os.NetworkOnMainThreadException e) {
+            e.printStackTrace();
+        }
     }
+
+
+    public void goToManualInputMenu(View view) {
+        Intent intent= new Intent(this, CountActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        intent.putExtra("profileName", yourProfile );
+        startActivity(intent);
+    }
+}
 

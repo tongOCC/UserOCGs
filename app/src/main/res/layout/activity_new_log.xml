@@ -11,9 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_below="@id/textView9"
         android:columnCount="3"
-        android:rowCount="6">
+        android:rowCount="7">
 
         <Button
             android:id="@+id/saveLogButton"
@@ -44,7 +43,7 @@
             android:layout_row="4"
             android:ems="10"
             android:hint="@string/count_activity_title"
-            android:inputType="numberSigned" />
+            android:inputType="numberDecimal" />
 
         <EditText
             android:id="@+id/HDPEPlasticEditText"
@@ -199,11 +198,21 @@
     </GridLayout>
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/updatedPricesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Aluminum $1.58/LB  |  Glass $0.104/ LB  |   Bi-Metal   $0.34 / LB  |  Plastic #1 (PET)  $1.23 /LB  |  Plastic #2 (HDPE) $0.56 / LB"
+        android:text=""
         android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/ManualInputButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/updatedPricesText"
+        android:layout_alignBottom="@+id/updatedPricesText"
+        android:layout_centerHorizontal="true"
+        android:onClick="goToManualInputMenu"
+        android:text="Manual Input" />
 </RelativeLayout>

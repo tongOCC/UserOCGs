@@ -67,5 +67,8 @@
     <string name="HDPECO2Text">HDPE Plastic Recycled: </string>
     <string name="PETCO2Text">PET Plastic Recycled:</string>
     <string name="emailStats">Email Stats</string>
+    <string name="count_individual">Tap the images for one count</string>
+    <string name="CountInstructionTextView">Tap the images to up the count</string>
+    <string name="CountTitle">Count Individual Material</string>
 
 </resources>
