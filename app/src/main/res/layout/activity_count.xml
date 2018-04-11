@@ -16,12 +16,11 @@
         android:id="@+id/AluminumSmallIncreaseButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/AluminumDecreaseButton"
+        android:layout_above="@+id/AluminumLargeIncreaseButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:text="Aluminum small" />
 
     <Button
@@ -103,7 +102,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/titleCountActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -161,8 +160,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/AluminumSmall"
         android:layout_alignBottom="@+id/AluminumSmall"
-        android:layout_toEndOf="@+id/textView14"
-        android:layout_toRightOf="@+id/textView14"
+        android:layout_toEndOf="@+id/titleCountActivity"
+        android:layout_toRightOf="@+id/titleCountActivity"
         android:text="TextView" />
 
     <TextView
@@ -191,8 +190,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/petplasticeCpntLarge"
         android:layout_alignBottom="@+id/petplasticeCpntLarge"
-        android:layout_toEndOf="@+id/textView14"
-        android:layout_toRightOf="@+id/textView14"
+        android:layout_toEndOf="@+id/titleCountActivity"
+        android:layout_toRightOf="@+id/titleCountActivity"
         android:text="TextView" />
 
     <TextView
@@ -282,6 +281,6 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/AluminumSmallIncreaseButton"
         android:layout_alignStart="@+id/AluminumSmallIncreaseButton"
-        android:layout_below="@+id/textView14"
+        android:layout_below="@+id/titleCountActivity"
         android:text="TextView" />
 </RelativeLayout>

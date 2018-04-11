@@ -112,7 +112,7 @@ private String tev= "hi";
 
         nameTextView.setText(logs.getName());
         descriptionTextView.setText("Date: " + logs.getDate() + "\nMoney Earned: $" + String.valueOf(twoPlaces.format(logs.getMoney_earned()))
-                + "\nTotal Recycled: LB(s) " + String.valueOf(logs.getTotal_recycled())+"\n\n");
+                + "\nTotal Recycled: " + String.valueOf(logs.getTotal_recycled())+"\n\n");
 //        try {
 //            Bitmap bitmap = MediaStore.Images.Media.getBitmap(mContext.getContentResolver(), logs.getReciept_image());
 //            bitmap = Bitmap.createScaledBitmap(bitmap, 100, 150, true);

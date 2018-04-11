@@ -67,7 +67,8 @@
             android:name=".ContactActivity"
             android:parentActivityName=".MapActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".CountActivity"></activity>
+        <activity android:name=".CountActivity" />
+        <activity android:name=".CountListViewActivity"></activity>
     </application>
 
 </manifest>

@@ -38,7 +38,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private LocationRequest mLocationRequest;
 
-    private static final Double LATITUDE= 33.675513,LONGITUDE =-117.910844;
+    private static final Double LATITUDE= 33.675395,LONGITUDE =-117.911584;
 
     /**
      * starts and instantiates the views

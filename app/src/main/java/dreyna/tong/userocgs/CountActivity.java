@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CountActivity extends AppCompatActivity {
+    private final String pricingSiteURL = "http://www.orangecoastcollege.edu/about_occ/recycling-center/Pages/Pricing-Details.aspx";
     private Button aluminumSmallIncreaseButton;
     private Button aluminumSmallDecreaseButton;
     private Button aluminumLargeIncreaseButton;
@@ -59,6 +60,7 @@ public class CountActivity extends AppCompatActivity {
     private ImageView saveImageButton;
     private TextView updatedPricesTextView;
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private TextView countTitle;
 
     private static final int GRANTED = PackageManager.PERMISSION_GRANTED;
     private static final int DENIED = PackageManager.PERMISSION_DENIED;
@@ -68,6 +70,7 @@ public class CountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_count);
 
+        countTitle= (TextView) findViewById(R.id.titleCountActivity);
         aluminumSmallIncreaseButton = (Button) findViewById(R.id.AluminumSmallIncreaseButton);
         aluminumSmallDecreaseButton = (Button) findViewById(R.id.AluminumDescreaseButton);
         aluminumLargeIncreaseButton = (Button) findViewById(R.id.AluminumLargeIncreaseButton);
@@ -99,7 +102,25 @@ public class CountActivity extends AppCompatActivity {
 
         updatedPricesTextView = (TextView) findViewById(R.id.updatedPricesTextView);
 
+        aluminumSmallTextCount.setText("0");
+        aluminumLargeCountTextView.setText("0");
+        petSmallCountText.setText("0");
+        petLargeCount.setText("0");
+        hdpeLargeCount.setText("0");
+        hdpeSmallCount.setText("0");
+
+        aluminumSmallTotalTextView.setText("0");
+        aluminumLargeTotal.setText("0");
+        petSmallTotal.setText("0");
+        petLargeCount.setText("0");
+        hdpeLargeCount.setText("0");
+        hdpeSmallTotal.setText("0");
+
+
+
         //Method call to updatePrices
+     //getFromWebsite(pricingSiteURL);
+
 
     }
 
@@ -192,6 +213,7 @@ public class CountActivity extends AppCompatActivity {
                 }
 
             }
+            countTitle.setText(rules);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
