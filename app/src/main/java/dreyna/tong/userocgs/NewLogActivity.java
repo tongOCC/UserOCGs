@@ -22,6 +22,11 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,12 +72,25 @@ private String result="";
     double PETPLASTIC_PRICE= 0;
     double HDPEPLASTIC_PRICE=0;
 
+    double ALUMINUM_PRICE_MANUAL= 0;
+    double GLASS_PRICE_MANUAL= 0;
+    double BIMETAL_PRICE_MANUAL= 0;
+    double PETPLASTIC_PRICE_MANUAL= 0;
+    double HDPEPLASTIC_PRICE_MANUAL=0;
+
+
     int aluminumCount=0;
     int glassCount=0;
     int bimetalCount=0;
     int petPlasticCount=0;
     int hdpePlasticCount=0;
     private boolean ManualModeEngaged;
+
+    String JSOUPAluminum="";
+    String JSOUPGlass="";
+    String JSOUPBiMetal="";
+    String JSOUPPETPlastic="";
+    String JSOUPHDPEPlastic="";
 
     /**
      * starts and instantiates views
@@ -160,16 +178,24 @@ updatedPricesText=(TextView) findViewById(R.id.updatedPricesText);
                     + BimetalLB
                     + glassLB +
                     alumminumLB;
+            money_earned=0.0;
+if(!ManualModeEngaged) {
+    money_earned =
+            Double.parseDouble(PETplasticEditText.getText().toString()) * PETPLASTIC_PRICE
+                    + Double.parseDouble(HDPEplasticEditText.getText().toString()) * HDPEPLASTIC_PRICE
+                    + Double.parseDouble(BiMetalEditText.getText().toString()) * BIMETAL_PRICE
+                    + Double.parseDouble(GlassEditText.getText().toString()) * GLASS_PRICE
+                    + Double.parseDouble(AlluminumEditText.getText().toString()) * ALUMINUM_PRICE;
 
-
-            money_earned =
-                    Double.parseDouble(PETplasticEditText.getText().toString()) * PETPLASTIC_PRICE
-                            + Double.parseDouble(HDPEplasticEditText.getText().toString()) * HDPEPLASTIC_PRICE
-                            + Double.parseDouble(BiMetalEditText.getText().toString()) * BIMETAL_PRICE
-                            + Double.parseDouble(GlassEditText.getText().toString()) * GLASS_PRICE
-                            + Double.parseDouble(AlluminumEditText.getText().toString()) * ALUMINUM_PRICE;
-
-
+}
+else if(ManualModeEngaged) {
+    money_earned =
+            Double.parseDouble(PETplasticEditText.getText().toString()) * PETPLASTIC_PRICE_MANUAL
+                    + Double.parseDouble(HDPEplasticEditText.getText().toString()) * HDPEPLASTIC_PRICE_MANUAL
+                    + Double.parseDouble(BiMetalEditText.getText().toString()) * BIMETAL_PRICE_MANUAL
+                    + Double.parseDouble(GlassEditText.getText().toString()) * GLASS_PRICE_MANUAL
+                    + Double.parseDouble(AlluminumEditText.getText().toString()) * ALUMINUM_PRICE_MANUAL;
+}
             totalTextView.setText(String.valueOf(twoPlaces.format(money_earned)));
             Logger newLog = new Logger(username, date, money_earned, total_recycle, imageUri);
             final String displayTotal = "After Crv You are have earned: " + String.valueOf(money_earned);
@@ -261,32 +287,23 @@ updatedPricesText=(TextView) findViewById(R.id.updatedPricesText);
 
         }
     private void getWebsite() throws MalformedURLException {
-        URL oracle = new URL("http://www.orangecoastcollege.edu/about_occ/recycling-center/Pages/Pricing-Details.aspx");
-        BufferedReader in = null;
+        Document doc = null;
         try {
-            in = new BufferedReader(
-                    new InputStreamReader(oracle.openStream()));
+            doc = Jsoup.connect("http://en.wikipedia.org/").get();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Elements newsHeadlines = doc.select("#mp-itn b a");
+        for (Element headline : newsHeadlines) {
+                   if(headline.attr("tr").equals("tr"))
+                       JSOUPAluminum=headline.attr("tr");
 
-        String inputLine;
-        try {
-            while ((inputLine = in.readLine()) != null)
-                result=inputLine+"\n";
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            try {
-                in.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (android.os.NetworkOnMainThreadException e) {
-            e.printStackTrace();
+
+
+
         }
     }
+
 
 
     public void goToManualInputMenu(View view) {
