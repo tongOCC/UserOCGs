@@ -290,8 +290,8 @@ updatedPricesText=(TextView) findViewById(R.id.updatedPricesText);
 
 
     public void goToManualInputMenu(View view) {
-       if(ManualModeEngaged) {
-           ManualModeEngaged= false;
+       if(!ManualModeEngaged) {
+           ManualModeEngaged= true;
            AlluminumEditText.setText("Count of Aluminum");
            GlassEditText.setText("Count of Aluminum");
            PETplasticEditText.setText("Count of Aluminum");
@@ -299,8 +299,8 @@ updatedPricesText=(TextView) findViewById(R.id.updatedPricesText);
            BiMetalEditText.setText("Input Pounds");
 
        }
-       else if (!ManualModeEngaged) {
-           ManualModeEngaged = true;
+       else if (ManualModeEngaged) {
+           ManualModeEngaged = false;
            AlluminumEditText.setText("Input Lbs.");
            aluminumCount=0;
            glassCount=0;
@@ -318,7 +318,7 @@ updatedPricesText=(TextView) findViewById(R.id.updatedPricesText);
 if(ManualModeEngaged==true)
 {
 aluminumCount++;
-AlluminumEditText.setText(aluminumCount);
+AlluminumEditText.setText(""+aluminumCount);
 }
     }
 
@@ -326,7 +326,7 @@ AlluminumEditText.setText(aluminumCount);
         if(ManualModeEngaged==true)
         {
             glassCount++;
-        GlassEditText.setText(glassCount);
+        GlassEditText.setText(""+glassCount);
         }
     }
 
@@ -334,7 +334,7 @@ AlluminumEditText.setText(aluminumCount);
         if(ManualModeEngaged==true)
         {
             bimetalCount++;
-            BiMetalEditText.setText(bimetalCount);
+            BiMetalEditText.setText(""+bimetalCount);
         }
     }
 
@@ -342,7 +342,7 @@ AlluminumEditText.setText(aluminumCount);
         if(ManualModeEngaged==true)
         {
             hdpePlasticCount++;
-            HDPEplasticEditText.setText(hdpePlasticCount);
+            HDPEplasticEditText.setText(""+hdpePlasticCount);
         }
     }
 
@@ -350,7 +350,7 @@ AlluminumEditText.setText(aluminumCount);
         if(ManualModeEngaged==true)
         {
             petPlasticCount++;
-           PETplasticEditText.setText( petPlasticCount);
+           PETplasticEditText.setText( ""+petPlasticCount);
         }
     }
 }
