@@ -66,17 +66,17 @@ private Button ManualInputButton;
 
     private DBHelper db;
 private String result="";
-    double ALUMINUM_PRICE= 0;
-    double GLASS_PRICE= 0;
-    double BIMETAL_PRICE= 0;
-    double PETPLASTIC_PRICE= 0;
-    double HDPEPLASTIC_PRICE=0;
+    double ALUMINUM_PRICE= 1.60;
+    double GLASS_PRICE= .102;
+    double BIMETAL_PRICE= .37;
+    double PETPLASTIC_PRICE= 1.24;
+    double HDPEPLASTIC_PRICE=0.57;
 
-    double ALUMINUM_PRICE_MANUAL= 0;
-    double GLASS_PRICE_MANUAL= 0;
-    double BIMETAL_PRICE_MANUAL= 0;
-    double PETPLASTIC_PRICE_MANUAL= 0;
-    double HDPEPLASTIC_PRICE_MANUAL=0;
+    double ALUMINUM_PRICE_MANUAL= 0.05;
+    double GLASS_PRICE_MANUAL= .05;
+    double BIMETAL_PRICE_MANUAL= .37;
+    double PETPLASTIC_PRICE_MANUAL= .05;
+    double HDPEPLASTIC_PRICE_MANUAL=.05;
 
 
     int aluminumCount=0;
@@ -149,20 +149,30 @@ updatedPricesText=(TextView) findViewById(R.id.updatedPricesText);
         Double money_earned, total_recycle;
         Double PETplasticLB, HDPEplasticLB, BimetalLB, glassLB, alumminumLB;
 
-        if (PETplasticEditText.getText().toString().equals(""))
+        if (PETplasticEditText.getText().toString().equals("Input Lbs.")
+                || PETplasticEditText.getText().toString().equals("Count of PETPlastic")
+                || PETplasticEditText.getText().toString().equals(""))
             PETplasticEditText.setText("0");
 
-        if (HDPEplasticEditText.getText().toString().equals(""))
+        if (HDPEplasticEditText.getText().toString().equals("Input Lbs.")
+                || HDPEplasticEditText.getText().toString().equals("Count of HDPEPlastic")
+                || HDPEplasticEditText.getText().toString().equals(""))
             HDPEplasticEditText.setText("0");
 
-        if (BiMetalEditText.getText().toString().equals(""))
+        if (BiMetalEditText.getText().toString().equals("Input Lbs.")
+                || BiMetalEditText.getText().toString().equals("Pounds of BiMetal")
+                || BiMetalEditText.getText().toString().equals(""))
             BiMetalEditText.setText("0");
         ;
 
-        if (GlassEditText.getText().toString().equals(""))
+        if (GlassEditText.getText().toString().equals("Input Lbs.")
+                || GlassEditText.getText().toString().equals("Count of Glass")
+                || GlassEditText.getText().toString().equals("") )
             GlassEditText.setText("0");
 
-        if (AlluminumEditText.getText().toString().equals(""))
+        if (AlluminumEditText.getText().toString().equals("Input Lbs.")
+                || AlluminumEditText.getText().toString().equals("Count of Aluminum")
+                || AlluminumEditText.getText().toString().equals("") )
             AlluminumEditText.setText("0");
 
             PETplasticLB = Double.parseDouble(PETplasticEditText.getText().toString());
@@ -309,24 +319,24 @@ else if(ManualModeEngaged) {
     public void goToManualInputMenu(View view) {
        if(!ManualModeEngaged) {
            ManualModeEngaged= true;
-           AlluminumEditText.setText("Count of Aluminum");
-           GlassEditText.setText("Count of Aluminum");
-           PETplasticEditText.setText("Count of Aluminum");
-           HDPEplasticEditText.setText("Count of Aluminum");
-           BiMetalEditText.setText("Input Pounds");
+           AlluminumEditText.setHint("Count of Aluminum");
+           GlassEditText.setHint("Count of Glass");
+           PETplasticEditText.setHint("Count of PETPlastic");
+           HDPEplasticEditText.setHint("Count of HDPEPlastic");
+           BiMetalEditText.setHint("Pounds of BiMetal");
 
        }
        else if (ManualModeEngaged) {
            ManualModeEngaged = false;
-           AlluminumEditText.setText("Input Lbs.");
+           AlluminumEditText.setHint("Input Lbs.");
            aluminumCount=0;
            glassCount=0;
            hdpePlasticCount=0;
            petPlasticCount=0;
-           GlassEditText.setText("Input Lbs.");
-           PETplasticEditText.setText("Input Lbs.");
-           HDPEplasticEditText.setText("Input Lbs.");
-           BiMetalEditText.setText("Input Lbs.");
+           GlassEditText.setHint("Input Lbs.");
+           PETplasticEditText.setHint("Input Lbs.");
+           HDPEplasticEditText.setHint("Input Lbs.");
+           BiMetalEditText.setHint("Input Lbs.");
        }
     }
 
